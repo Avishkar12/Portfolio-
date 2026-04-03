@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avishkar Pandit | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #040404;
+      --panel: rgba(10, 8, 18, 0.78);
+      --line: rgba(255,255,255,0.08);
+      --line-soft: rgba(255,255,255,0.04);
+      --text: #f7f3ea;
+      --muted: #b5b5bf;
+      --yellow: #f5ba29;
+      --orange: #ff7a00;
+      --max: 1680px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at 50% -8%, rgba(143, 67, 255, 0.65), transparent 18%),
+        radial-gradient(circle at 50% 78%, rgba(124, 88, 255, 0.38), transparent 16%),
+        radial-gradient(circle at 50% 88%, rgba(255, 255, 255, 0.16), transparent 10%),
+        linear-gradient(180deg, #020203 0%, #05030b 26%, #0a0616 58%, #06040c 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: 0.08;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { width: min(calc(100% - 4px), var(--max)); margin: 2px auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 16px 20px; border: 1px solid var(--line-soft); border-radius: 22px; background: rgba(10, 8, 18, 0.52); backdrop-filter: blur(12px);
+    }
+    .brand, .title, .section-head h2, .section-kicker, .video-meta h3 { font-family: "Space Grotesk", sans-serif; }
+    .brand { font-size: .95rem; text-transform: uppercase; letter-spacing: .18em; font-weight: 700; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: .8rem; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+    .hero {
+      margin-top: 14px; min-height: 72vh; border: 1px solid var(--line-soft); border-radius: 28px; overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.26), rgba(0,0,0,.38)),
+        radial-gradient(circle at 50% 80%, rgba(143,67,255,.12), transparent 42%),
+        linear-gradient(180deg, rgba(7,6,12,.72), rgba(5,4,10,.74));
+      display: grid; place-items: center; text-align: center; padding: 56px 30px;
+    }
+    .title {
+      font-size: clamp(2.8rem, 10vw, 7rem); line-height: .9; letter-spacing: -.06em; font-weight: 700; color: var(--yellow);
+      text-shadow: 0 0 28px rgba(245,186,41,.25);
+    }
+    .subtitle { margin-top: 18px; color: var(--muted); line-height: 1.8; font-size: 1rem; }
+    .subtitle strong { color: var(--text); }
+    .section { margin-top: 16px; border-top: 1px solid var(--line); background: linear-gradient(180deg, rgba(143,67,255,.06), rgba(255,255,255,0)); }
+    .section-head { padding: 28px 8px 18px; border-bottom: 1px solid var(--line-soft); }
+    .section-kicker { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 3rem); line-height: .96; }
+    .section-body { padding: 24px 8px 8px; }
+    .block {
+      border-radius: 26px; background: linear-gradient(180deg, rgba(143,67,255,.1), rgba(255,255,255,.015)); overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,.16);
+    }
+    .block-header { padding: 22px 24px 16px; text-align: center; border-bottom: 1px solid var(--line-soft); }
+    .block-title { font-family: "Space Grotesk", sans-serif; font-size: clamp(2rem, 5vw, 4.4rem); line-height: .92; font-weight: 700; }
+    .block-title span { color: var(--yellow); text-shadow: 0 0 22px rgba(245,186,41,.45); }
+    .video-grid { display: grid; gap: 18px; padding: 0 18px 18px; }
+    .wide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tall-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .video-card, .content-card {
+      border: 1px solid var(--line-soft); border-radius: 22px; overflow: hidden;
+      background: linear-gradient(180deg, rgba(143,67,255,.08), rgba(255,255,255,.015));
+    }
+    .frame { width: 100%; background: #000; overflow: hidden; }
+    .frame.wide { aspect-ratio: 16 / 9; }
+    .frame.tall { aspect-ratio: 9 / 16; }
+    iframe { width: 100%; height: 100%; border: 0; background: #000; }
+    .video-meta { padding: 16px; }
+    .video-meta h3 { font-size: 1.1rem; }
+    .cards { display: grid; gap: 18px; }
+    .two-col { grid-template-columns: 1.05fr .95fr; }
+    .four-col { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .content-card { padding: 20px; }
+    .content-card p, .content-card li { color: var(--muted); line-height: 1.8; }
+    .facts { display: grid; gap: 12px; }
+    .fact { padding: 14px 16px; border: 1px solid var(--line-soft); border-radius: 18px; background: linear-gradient(180deg, rgba(143,67,255,.09), rgba(255,255,255,.015)); }
+    .fact label { display: block; margin-bottom: 6px; color: var(--orange); font-size: .75rem; text-transform: uppercase; letter-spacing: .18em; font-family: "Space Grotesk", sans-serif; }
+    .experience-list { display: grid; gap: 18px; }
+    .experience-card { padding: 20px; border: 1px solid var(--line-soft); border-radius: 22px; background: linear-gradient(180deg, rgba(143,67,255,.08), rgba(255,255,255,.015)); }
+    .experience-top { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--line-soft); margin-bottom: 14px; }
+    .experience-top h3 { font-family: "Space Grotesk", sans-serif; font-size: 1.3rem; margin-bottom: 8px; }
+    .company { color: var(--yellow); font-weight: 700; }
+    .date { color: var(--muted); font-weight: 700; white-space: nowrap; }
+    .bullet-list { list-style: none; display: grid; gap: 10px; }
+    .bullet-list li { position: relative; padding-left: 16px; }
+    .bullet-list li::before { content: ""; position: absolute; left: 0; top: 12px; width: 8px; height: 8px; background: linear-gradient(135deg, var(--orange), var(--yellow)); }
+    .achievement-card strong { display: block; font-family: "Space Grotesk", sans-serif; font-size: 2rem; color: var(--yellow); line-height: .9; margin-bottom: 12px; }
+    .footer { padding: 20px; margin-top: 16px; border-top: 1px solid var(--line); color: var(--muted); text-transform: uppercase; letter-spacing: .16em; font-size: .8rem; }
+    @media (max-width: 980px) {
+      .wide-grid, .tall-grid, .two-col, .four-col { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav { position: static; flex-direction: column; align-items: start; }
+      .wide-grid, .tall-grid, .two-col, .four-col { grid-template-columns: 1fr; }
+      .experience-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="brand">Avishkar Pandit</div>
+      <nav class="nav-links">
+        <a href="#videos">Videos</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#skills">Skills</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="title">Avishkar Pandit</div>
+        <div class="subtitle"><strong>Video Content Designer</strong><br>Pune, Maharashtra</div>
+      </div>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Portfolio</div>
+          <h2>Video Showcase</h2>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="block">
+          <div class="block-header"><div class="block-title"><span>Long-Form</span> Content</div></div>
+          <div class="video-grid wide-grid">
+            <article class="video-card">
+              <div class="frame wide"><iframe src="https://drive.google.com/file/d/1rLdUK3ozYQcBtVXT_m6xO8goIYedpCGt/preview?autoplay=1" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Documentary Style"></iframe></div>
+              <div class="video-meta"><h3>Documentary Style</h3></div>
+            </article>
+            <article class="video-card">
+              <div class="frame wide"><iframe src="https://drive.google.com/file/d/1TfoWPsGkumZcuIlrhB-LYVnkL-FmIzO2/preview?autoplay=1" loading="lazy" allow="autoplay; fullscreen" allowfullscreen title="Promotional Video"></iframe></div>
+              <div class="video-meta"><h3>Promotional Video</h3></div>
+            </article>
+          </div>
+        </div>
+        <div class="block" style="margin-top:24px;">
+          <div class="block-header"><div class="block-title"><span>Short-form</span> Content</div></div>
+          <div class="video-grid tall-grid">
+            <article class="video-card">
+              <div class="frame tall"><iframe src="https://www.instagram.com/p/DWfrYbXTZSt/embed/captioned/" loading="lazy" allowfullscreen title="Talking Head Edit"></iframe></div>
+              <div class="video-meta"><h3>Talking Head Edit</h3></div>
+            </article>
+            <article class="video-card">
+              <div class="frame tall"><iframe src="https://www.instagram.com/reel/DU-zQWyEodv/embed/captioned/" loading="lazy" allowfullscreen title="Informational Edit"></iframe></div>
+              <div class="video-meta"><h3>Informational Edit</h3></div>
+            </article>
+            <article class="video-card">
+              <div class="frame tall" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(143,67,255,.16), rgba(255,255,255,.02));color:#f7f3ea;font-family:Space Grotesk, sans-serif;font-size:clamp(1.1rem,2.2vw,1.5rem);text-transform:uppercase;letter-spacing:.04em;">Pitch Video</div>
+              <div class="video-meta"><h3>Pitch Video</h3></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head"><div><div class="section-kicker">Overview</div><h2>Avishkar Pandit</h2></div></div>
+      <div class="section-body">
+        <div class="cards two-col">
+          <div class="content-card"><p>Avishkar Pandit<br>Video Content Designer<br>Pune, Maharashtra</p></div>
+          <div class="facts">
+            <div class="fact"><label>Role</label><div>Video Content Designer</div></div>
+            <div class="fact"><label>Location</label><div>Pune, Maharashtra</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-head"><div><div class="section-kicker">Experience</div></div></div>
+      <div class="section-body">
+        <div class="experience-list">
+          <article class="experience-card"><div class="experience-top"><div><h3>Video Content Designer</h3><div class="company">Binge Labs Pvt. Ltd., Maharashtra</div></div><div class="date">August 2025 - Current</div></div><ul class="bullet-list"><li>Edited 200+ short-form videos across niches - startup ecosystems, business models, VC perspectives, AI advancements, achieving viewer engagement and understanding</li><li>Helped grow a creator's page from 24K to 67K+ followers with multiple videos crossing millions of views on Instagram</li><li>Handled end-to-end post-production: raw footage selection, precision cuts, AI voiceovers (Minimax AI), video generation (Higgsfield), captions, motion, and pacing</li><li>Produced content featuring founders, VCs, builders - discussion sessions, masterclasses, debates, Saturday meetups, fostering community dialogue and knowledge sharing</li><li>Primary Tools: Premiere Pro, After Effects</li><li>Skill set: AI integration into workflow</li></ul></article>
+          <article class="experience-card"><div class="experience-top"><div><h3>Freelance Video Editor</h3><div class="company">Freelance</div></div><div class="date">December 2023 - August 2025</div></div><ul class="bullet-list"><li>Collaborated with diverse clients across industries to create engaging short-form and long-form content for Instagram, TikTok, and YouTube</li><li>Executed comprehensive editing from raw footage to final export, integrating motion graphics, audio editing, captions, and pacing for impactful storytelling</li><li>Developed streamlined workflows that ensured high-quality outputs and rapid turnaround for multiple simultaneous client projects</li></ul></article>
+          <article class="experience-card"><div class="experience-top"><div><h3>Video Editor</h3><div class="company">Quorocity | Pune, Maharashtra</div></div><div class="date">October 2024 - June 2025</div></div><ul class="bullet-list"><li>Edited content for Quorocity's media production pipeline across multiple formats</li><li>Managed media production workflows and contributed to visual storytelling across the platform</li><li>Tools: Premiere Pro</li><li>After Effects</li><li>Media Production Management</li></ul></article>
+          <article class="experience-card"><div class="experience-top"><div><h3>Video Editor</h3><div class="company">Rio Craft | Remote</div></div><div class="date">December 2023 - September 2024</div></div><ul class="bullet-list"><li>Collaborated with a media agency across 10 months on motion graphics, audio editing, and visual storytelling</li><li>Adapted to varied brand styles and content requirements across a diverse client base</li></ul></article>
+          <article class="experience-card"><div class="experience-top"><div><h3>Campus Ambassador</h3><div class="company">Viral Fission | Pune, Maharashtra</div></div><div class="date">March 2023 - May 2024</div></div><ul class="bullet-list"><li>Represented Viral Fission on campus, building networks and driving awareness through community engagement</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="achievements">
+      <div class="section-head"><div><div class="section-kicker">Achievements</div><h2>Key Achievements</h2></div></div>
+      <div class="section-body">
+        <div class="cards four-col">
+          <article class="content-card achievement-card"><strong>300+</strong><span>300+ videos edited across Instagram, TikTok, and YouTube</span></article>
+          <article class="content-card achievement-card"><strong>1M+</strong><span>Multiple videos crossing millions of views on Instagram</span></article>
+          <article class="content-card achievement-card"><strong>24K to 67K+</strong><span>Contributed to growing a creator page from 24K to 67K+ followers</span></article>
+          <article class="content-card achievement-card"><strong>AI</strong><span>Integrated AI tools (Minimax, Higgsfield) into production workflow for faster, sharper output</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-head"><div><div class="section-kicker">Skills</div><h2>Skills and Tools</h2></div></div>
+      <div class="section-body"><article class="content-card"><p>Adobe Premiere Pro, Adobe After Effects, Precision Cutting, Pacing, Motion Graphics, Typography, Visual Storytelling, Color Correction, Minimax (Voiceover), Higgsfield (AI Video), Gemini, ChatGPT, Topaz AI, Short-form Content, Hooks & Retention, B-Roll Selection, Audio Editing, SFX, Content Strategy, Platform Mechanics, Creator Growth, Personal Branding</p></article></div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-head"><div><div class="section-kicker">Education</div><h2>Education</h2></div></div>
+      <div class="section-body"><article class="content-card"><h3>BTech | Mechanical Engineering</h3><p>JSPM's Rajarshi Shahu College of Engineering, Pune</p><p>Graduated - June 2024</p></article></div>
+    </section>
+
+    <footer class="footer">Avishkar Pandit</footer>
+  </div>
+</body>
+</html>
