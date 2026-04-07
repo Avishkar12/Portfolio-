@@ -375,6 +375,24 @@
       padding: 16px;
     }
 
+    .video-placeholder {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(143, 67, 255, 0.22), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        #050507;
+      color: rgba(247, 243, 234, 0.82);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
     .video-meta h3 {
       font-family: "Space Grotesk", sans-serif;
       font-size: 1.15rem;
@@ -684,9 +702,7 @@
 
               <article class="video-card">
                 <div class="video-frame" style="aspect-ratio: 9 / 16;">
-                  <div class="embed-crop tall">
-                    <iframe src="https://next.frame.io/share/5747549e-bd2e-4c75-9e19-1f01d878f06a/view/f01de94f-d3fd-40bc-89d5-ef239ddb4729" loading="lazy" allowfullscreen title="Informative Video"></iframe>
-                  </div>
+                  <div class="video-placeholder">Informative Video</div>
                 </div>
                 <div class="video-meta">
                   <h3>Informative Video</h3>
