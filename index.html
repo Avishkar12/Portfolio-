@@ -173,6 +173,7 @@
       object-fit: cover;
       opacity: 0.9;
       filter: contrast(1.02) saturate(1.08);
+      pointer-events: none;
     }
 
     .hero-overlay {
@@ -937,7 +938,7 @@
     </header>
 
     <section class="hero reveal">
-      <video class="hero-video" autoplay muted loop playsinline>
+      <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen" tabindex="-1" aria-hidden="true">
         <source src="https://media.githubusercontent.com/media/Avishkar12/Portfolio-/main/chrome_lUPmxJVZj5.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
@@ -1257,6 +1258,28 @@
         navToggle?.setAttribute("aria-expanded", "false");
       });
     });
+
+    const heroVideo = document.querySelector(".hero-video");
+
+    const ensureHeroPlayback = () => {
+      if (!heroVideo) return;
+      heroVideo.muted = true;
+      heroVideo.defaultMuted = true;
+      heroVideo.playsInline = true;
+      heroVideo.setAttribute("muted", "");
+      heroVideo.setAttribute("playsinline", "");
+      heroVideo.setAttribute("webkit-playsinline", "");
+      const playAttempt = heroVideo.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {});
+      }
+    };
+
+    heroVideo?.addEventListener("loadeddata", ensureHeroPlayback);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) ensureHeroPlayback();
+    });
+    ensureHeroPlayback();
 
     const shortformPlayers = Array.from(document.querySelectorAll(".shortform-player"));
 
