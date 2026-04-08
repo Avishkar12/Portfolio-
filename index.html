@@ -844,6 +844,107 @@
       font-size: 0.95rem;
     }
 
+    .education-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .education-card {
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(18, 23, 40, 0.96), rgba(24, 20, 46, 0.9));
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.2);
+    }
+
+    .education-card-inner {
+      padding: 28px 30px;
+    }
+
+    .education-top {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .education-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #3972ff, #9f42ff);
+      color: #fff;
+      margin-top: 2px;
+    }
+
+    .education-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .education-degree {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .education-field {
+      color: #c783ff;
+      font-weight: 700;
+    }
+
+    .education-status {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(51, 143, 96, 0.22);
+      color: #7ef0af;
+      font-size: 0.86rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .education-school {
+      margin-bottom: 18px;
+      color: #d9d4df;
+      font-size: 1.04rem;
+      line-height: 1.7;
+      font-weight: 700;
+    }
+
+    .education-details {
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .education-detail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1.6;
+    }
+
+    .education-detail svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.9;
+      flex: 0 0 auto;
+    }
+
     .footer {
       padding: 20px;
       margin-top: 16px;
@@ -1100,6 +1201,18 @@
       .profile-lead,
       .profile-bottom-title {
         font-size: 0.98rem;
+      }
+
+      .education-card-inner {
+        padding: 20px;
+      }
+
+      .education-top {
+        grid-template-columns: 1fr;
+      }
+
+      .education-status {
+        justify-self: start;
       }
 
       .profile-stat {
@@ -1496,11 +1609,35 @@
         </div>
       </div>
       <div class="section-body">
-        <article class="education-card reveal">
-          <h3>BTech | Mechanical Engineering</h3>
-          <p>JSPM's Rajarshi Shahu College of Engineering, Pune</p>
-          <p>Graduated - June 2024</p>
-        </article>
+        <div class="education-grid">
+          <article class="education-card reveal">
+            <div class="education-card-inner">
+              <div class="education-top">
+                <div class="education-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5-9-5Z"></path><path d="M7 11v4c0 1.5 2.24 3 5 3s5-1.5 5-3v-4"></path><path d="M21 10v6"></path></svg>
+                </div>
+                <div>
+                  <h3 class="education-degree">BTech | Mechanical Engineering</h3>
+                  <div class="education-field">Mechanical Engineering</div>
+                </div>
+                <div class="education-status">Completed</div>
+              </div>
+
+              <div class="education-school">JSPM's Rajarshi Shahu College of Engineering, Pune</div>
+
+              <div class="education-details">
+                <div class="education-detail">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect x="3" y="6" width="18" height="15" rx="2"></rect><path d="M3 10h18"></path></svg>
+                  <span>Graduated — June 2024</span>
+                </div>
+                <div class="education-detail">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+                  <span>Pune, Maharashtra, India</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
