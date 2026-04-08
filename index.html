@@ -602,17 +602,49 @@
     }
 
     .profile-stat {
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      padding: 6px 10px;
       text-align: center;
+    }
+
+    .profile-stat-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+    }
+
+    .profile-stat-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .profile-stat-icon.purple {
+      background: linear-gradient(135deg, rgba(93, 74, 255, 0.28), rgba(183, 92, 255, 0.22));
+      color: #c783ff;
+    }
+
+    .profile-stat-icon.pink {
+      background: linear-gradient(135deg, rgba(118, 49, 117, 0.28), rgba(223, 89, 177, 0.22));
+      color: #ff7fc8;
+    }
+
+    .profile-stat-icon.orange {
+      background: linear-gradient(135deg, rgba(121, 58, 43, 0.28), rgba(237, 107, 87, 0.22));
+      color: #ff8b75;
     }
 
     .profile-stat strong {
       display: block;
       font-family: "Space Grotesk", sans-serif;
-      font-size: 1.9rem;
+      font-size: 1.75rem;
       line-height: 1;
       color: #fff;
       margin-bottom: 10px;
@@ -1058,6 +1090,10 @@
         font-size: 0.98rem;
       }
 
+      .profile-stat {
+        padding: 0;
+      }
+
       .reel-sound {
         top: 10px;
         right: 10px;
@@ -1244,14 +1280,23 @@
             </div>
             <div class="profile-stats">
               <div class="profile-stat">
+                <div class="profile-stat-icon purple" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 7h8"></path><path d="M7 10h10"></path><path d="M8 3h8l1 3H7l1-3Z"></path><path d="M6 6h12v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6Z"></path></svg>
+                </div>
                 <strong>2+ Years</strong>
                 <span>Professional Experience</span>
               </div>
               <div class="profile-stat">
+                <div class="profile-stat-icon pink" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path><circle cx="9.5" cy="7" r="3"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a3 3 0 0 1 0 5.75"></path></svg>
+                </div>
                 <strong>300+ Videos</strong>
                 <span>Content Produced</span>
               </div>
               <div class="profile-stat">
+                <div class="profile-stat-icon orange" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M8.5 14.5 7 21l5-2 5 2-1.5-6.5"></path></svg>
+                </div>
                 <strong>Active</strong>
                 <span>Freelancer</span>
               </div>
