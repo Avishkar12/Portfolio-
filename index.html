@@ -293,6 +293,7 @@
     .longform-item .video-frame {
       aspect-ratio: 16 / 9;
       border-bottom: 0;
+      position: relative;
     }
 
     .longform-meta {
@@ -305,6 +306,37 @@
       font-family: "Space Grotesk", sans-serif;
       font-size: 1.1rem;
       margin-bottom: 8px;
+    }
+
+    .longform-jumps {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+    }
+
+    .longform-jump {
+      min-width: 64px;
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(8, 8, 14, 0.68);
+      color: var(--text);
+      backdrop-filter: blur(12px);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .longform-jump:hover {
+      transform: translateY(-1px);
+      background: rgba(26, 20, 46, 0.9);
+      border-color: rgba(245, 186, 41, 0.36);
     }
 
     .shortform-grid {
@@ -1380,9 +1412,13 @@
             <div class="longform-grid">
               <article class="longform-item">
                 <div class="video-frame">
-                  <video autoplay muted loop playsinline preload="metadata" title="Documentary Style">
+                  <video class="longform-player" autoplay muted loop playsinline preload="metadata" title="Documentary Style">
                     <source src="https://media.githubusercontent.com/media/Avishkar12/Portfolio-/main/documentary_style.mp4" type="video/mp4">
                   </video>
+                  <div class="longform-jumps">
+                    <button class="longform-jump" type="button" data-skip="-5" aria-label="Go back 5 seconds">-5s</button>
+                    <button class="longform-jump" type="button" data-skip="5" aria-label="Go forward 5 seconds">+5s</button>
+                  </div>
                 </div>
                 <div class="longform-meta">
                   <h3>Documentary Style</h3>
@@ -1391,9 +1427,13 @@
 
               <article class="longform-item">
                 <div class="video-frame">
-                  <video autoplay muted loop playsinline preload="metadata" title="Promotional Video">
+                  <video class="longform-player" autoplay muted loop playsinline preload="metadata" title="Promotional Video">
                     <source src="https://media.githubusercontent.com/media/Avishkar12/Portfolio-/main/promotional_video.mp4" type="video/mp4">
                   </video>
+                  <div class="longform-jumps">
+                    <button class="longform-jump" type="button" data-skip="-5" aria-label="Go back 5 seconds">-5s</button>
+                    <button class="longform-jump" type="button" data-skip="5" aria-label="Go forward 5 seconds">+5s</button>
+                  </div>
                 </div>
                 <div class="longform-meta">
                   <h3>Promotional Video</h3>
@@ -1716,6 +1756,7 @@
     ensureHeroPlayback();
 
     const shortformPlayers = Array.from(document.querySelectorAll(".shortform-player"));
+    const longformPlayers = Array.from(document.querySelectorAll(".longform-player"));
 
     const syncSoundButton = (video) => {
       const frame = video.closest(".video-frame");
@@ -1767,6 +1808,24 @@
       });
 
       video.addEventListener("volumechange", () => syncSoundButton(video));
+    });
+
+    longformPlayers.forEach((video) => {
+      const frame = video.closest(".video-frame");
+      const jumpButtons = frame?.querySelectorAll("[data-skip]");
+
+      jumpButtons?.forEach((button) => {
+        button.addEventListener("click", () => {
+          const offset = Number(button.dataset.skip || 0);
+          const duration = Number.isFinite(video.duration) ? video.duration : null;
+          const targetTime = video.currentTime + offset;
+          if (duration === null) {
+            video.currentTime = Math.max(0, targetTime);
+            return;
+          }
+          video.currentTime = Math.min(duration, Math.max(0, targetTime));
+        });
+      });
     });
   </script>
 </body>
